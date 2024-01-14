@@ -1,5 +1,4 @@
 import os
-import socket
 
 import paramiko
 import typer
@@ -9,7 +8,7 @@ from searchpi.command_executer import CommandExecuter
 
 def searchpi(nmap_command: str, ssh_username: str, ssh_key_filename: str):
     # searchpi 192.168.1.0/24 pomponchik ~/.ssh/id_rsa.pub
-    key_filename=os.path.expanduser(ssh_key_filename)
+    os.path.expanduser(ssh_key_filename)
 
     executer = CommandExecuter(['nmap', '-sn', nmap_command])
     executer.run()
@@ -29,7 +28,7 @@ def searchpi(nmap_command: str, ssh_username: str, ssh_key_filename: str):
             ssh.close()
             break
         #except (BadHostKeyException, AuthenticationException, SSHException, socket.error) as e:
-        except paramiko.ssh_exception.AuthenticationException as e:
+        except paramiko.ssh_exception.AuthenticationException:
             result.append(address)
             break
 
