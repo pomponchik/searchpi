@@ -1,5 +1,12 @@
 # searchpi
 
+[![Downloads](https://static.pepy.tech/badge/searchpi/month)](https://pepy.tech/project/searchpi)
+[![Downloads](https://static.pepy.tech/badge/searchpi)](https://pepy.tech/project/searchpi)
+[![Hits-of-Code](https://hitsofcode.com/github/pomponchik/searchpi?branch=main)](https://hitsofcode.com/github/pomponchik/searchpi/view?branch=main)
+[![Python versions](https://img.shields.io/pypi/pyversions/searchpi.svg)](https://pypi.python.org/pypi/searchpi)
+[![PyPI version](https://badge.fury.io/py/searchpi.svg)](https://badge.fury.io/py/searchpi)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+
 This is a very stupid CLI tool that is designed to search for SSH-ready devices on your local network, starting with those with the most senior local IP addresses.
 
 Before using this tool, install [`nmap`](https://nmap.org/) on your computer. Then install the tool by [`pip`](https://pip.pypa.io/en/stable/installation/):
