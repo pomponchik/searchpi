@@ -6,7 +6,7 @@ import typer
 from searchpi.command_executer import CommandExecuter
 
 
-def searchpi(nmap_command: str, ssh_username: str, ssh_key_filename: str):
+def searchpi(nmap_command: str, ssh_username: str, ssh_key_filename: str, one: bool = False):
     # searchpi 192.168.1.0/24 pomponchik ~/.ssh/id_rsa.pub
     os.path.expanduser(ssh_key_filename)
 
@@ -26,16 +26,20 @@ def searchpi(nmap_command: str, ssh_username: str, ssh_key_filename: str):
             ssh.connect(address, username=ssh_username, key_filename=ssh_key_filename)
             result.append(address)
             ssh.close()
-            break
         #except (BadHostKeyException, AuthenticationException, SSHException, socket.error) as e:
         except paramiko.ssh_exception.AuthenticationException:
             result.append(address)
-            break
+        except Exception:
+            pass
 
     if not result:
         print("I can't find your Raspberry Pi :(")
 
-    print(f'ssh {ssh_username}@{result[0]}')
+    if one:
+        result = result[0:]
+
+    for address in result:
+        print(f'ssh {ssh_username}@{address}')
 
 
 def main():
